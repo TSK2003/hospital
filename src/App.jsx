@@ -135,6 +135,7 @@ function AppContent() {
 
           {/* Admin Routes */}
           <Route path="/admin-panel-login" element={<AdminLogin />} />
+          <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={<AdminLayout />} />
 
           {/* Fallback to Home */}
