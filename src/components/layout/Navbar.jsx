@@ -229,9 +229,16 @@ const Navbar = ({ onOpenAppointment }) => {
               <span>{hospitalInfo.phone || '+91 63807 67265'}</span>
             </a>
 
+            <Link
+              to="/login"
+              className="flex items-center space-x-1 px-3 py-2 bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-700 rounded text-xs font-bold transition-colors whitespace-nowrap"
+            >
+              <span>Portal Login</span>
+            </Link>
+
             <button
               onClick={onOpenAppointment}
-              className="flex items-center space-x-2 px-5 py-2.5 bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold rounded-md shadow-sm transition-colors cursor-pointer whitespace-nowrap"
+              className="flex items-center space-x-2 px-4.5 py-2.5 bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold rounded-md shadow-sm transition-colors cursor-pointer whitespace-nowrap"
             >
               <Calendar className="w-4 h-4" />
               <span>Book Appointment</span>
@@ -313,6 +320,14 @@ const Navbar = ({ onOpenAppointment }) => {
           </Link>
 
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+            <Link
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-md flex items-center justify-center space-x-2 text-xs"
+            >
+              <span>Portal Login (Admin / Patient)</span>
+            </Link>
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

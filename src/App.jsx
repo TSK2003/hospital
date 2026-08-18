@@ -23,9 +23,10 @@ import BlogDetailPage from './pages/BlogDetailPage';
 import ContactPage from './pages/ContactPage';
 import AboutUsPage from './pages/AboutUsPage';
 
-// Admin Pages
+// Admin & Patient Pages
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminLayout from './pages/admin/AdminLayout';
+import PatientPortal from './pages/patient/PatientPortal';
 
 // Auto Scroll to Top Component
 const ScrollToTop = () => {
@@ -36,12 +37,16 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Wrapper to conditionally show public layout (hide on admin routes)
+// Wrapper to conditionally show public layout (hide on admin & standalone portal routes)
 const PublicLayout = ({ children, onOpenAppointment, onOpenEnquiry }) => {
   const location = useLocation();
-  const isAdmin = location.pathname.startsWith('/admin') || location.pathname === '/admin-panel-login';
+  const isStandalone = 
+    location.pathname.startsWith('/admin') || 
+    location.pathname === '/admin-panel-login' || 
+    location.pathname === '/login' ||
+    location.pathname.startsWith('/patient');
 
-  if (isAdmin) {
+  if (isStandalone) {
     return <>{children}</>;
   }
 
@@ -133,9 +138,10 @@ function AppContent() {
             element={<ContactPage onOpenAppointment={handleOpenAppointment} />}
           />
 
-          {/* Admin Routes */}
+          {/* Unified Auth & Portals */}
           <Route path="/admin-panel-login" element={<AdminLogin />} />
           <Route path="/login" element={<AdminLogin />} />
+          <Route path="/patient/portal" element={<PatientPortal onOpenAppointment={handleOpenAppointment} />} />
           <Route path="/admin/*" element={<AdminLayout />} />
 
           {/* Fallback to Home */}

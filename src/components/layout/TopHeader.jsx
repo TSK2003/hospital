@@ -1,5 +1,6 @@
 import React from 'react';
-import { PhoneCall, Phone, Mail, Clock, HelpCircle, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { PhoneCall, Phone, Mail, Clock, HelpCircle, ShieldCheck, UserCheck } from 'lucide-react';
 import { useAdmin } from '../../context/AdminContext';
 
 const TopHeader = ({ onOpenEnquiry }) => {
@@ -41,8 +42,8 @@ const TopHeader = ({ onOpenEnquiry }) => {
           </a>
         </div>
 
-        {/* Right: OPD & Accreditation */}
-        <div className="flex items-center space-x-4 ml-auto sm:ml-0">
+        {/* Right: OPD, Accreditation & Login Button */}
+        <div className="flex items-center space-x-3 ml-auto sm:ml-0">
           <div className="hidden lg:flex items-center space-x-1.5 text-slate-400 text-[11px]">
             <Clock className="w-3.5 h-3.5 text-slate-400" />
             <span>OPD: Mon - Sat 8:00 AM - 9:00 PM</span>
@@ -55,11 +56,20 @@ const TopHeader = ({ onOpenEnquiry }) => {
 
           <button
             onClick={onOpenEnquiry}
-            className="flex items-center space-x-1 px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded text-xs transition-colors cursor-pointer"
+            className="flex items-center space-x-1 px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded text-xs transition-colors cursor-pointer"
           >
             <HelpCircle className="w-3 h-3" />
-            <span>Quick Enquiry</span>
+            <span>Enquiry</span>
           </button>
+
+          {/* DEDICATED PORTAL LOGIN BUTTON (PATIENT & ADMIN) */}
+          <Link
+            to="/login"
+            className="flex items-center space-x-1 px-3 py-1 bg-sky-700 hover:bg-sky-600 text-white font-bold rounded text-xs transition-colors shadow-xs"
+          >
+            <UserCheck className="w-3.5 h-3.5" />
+            <span>Portal Login</span>
+          </Link>
         </div>
 
       </div>
